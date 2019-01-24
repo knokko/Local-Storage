@@ -9,13 +9,14 @@ function createLocalStorageOutput(key){
 
 function LocalStorageBitOutput(key){
 	this.key = key;
-	this.string = '';
+	this.array = new Uint16Array(100);
 	this.boolIndex = 0;
+	this.index = 0;
 	this.currentBools = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 }
 
-extendProtoType(BitHelper.StringBitOutput, LocalStorageBitOutput);
+extendProtoType(BitHelper.CharArrayBitOutput, LocalStorageBitOutput);
 
 LocalStorageBitOutput.prototype.onTerminate = function(){
-	localStorage.setItem(this.key, this.string);
+	localStorage.setItem(this.key, this.toString());
 };
